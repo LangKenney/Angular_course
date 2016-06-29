@@ -1,10 +1,16 @@
-//Angular Module
+
 var myApp = angular.module('myApp',['ngMessages','ngResource']);
 
 //Angular Controller
 //Minifiable version
-myApp.controller('mainController' , ['$log', '$scope', '$filter', '$resource', function($log, $scope, $filter, $resource){
+myApp.controller('mainController' , ['$scope', '$location', '$log', function($scope, $location, $log){
+    $log.info($location.path());
+    
+}]);
 
+myApp.controller('secondController' , ['$scope', function($scope){
+    console.log($scope)
+    $scope.secondName = 'Finally this isnt broken'
 }]);
 
 //Angular Controller Origional
@@ -62,3 +68,6 @@ myApp.controller('mainController' , ['$log', '$scope', '$filter', '$resource', f
 //     console.log(john.firstname);
 // }
 // logPerson();
+
+
+

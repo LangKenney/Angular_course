@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" ng-app="myApp">
     <head>
-        <title>Introduction to AngularJS</title>
+        <title>Introduction to AngularJS - Single page apps</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta charset="UTF-8">
 
@@ -30,30 +30,20 @@
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/Angular1_course/"><i class="fa fa-home"></i> Angurlar 1 home</a></li>
+					<li><a href="/Angular1_course_3/"><i class="fa fa-home"></i> Angurlar 1 v3 home</a></li>
 				</ul>
 			</div>
 			</nav>
 		</header>
-
+        
+        
+        
         <div class="container">
-
+            <!-- MAIN CONTROLLER-->
             <div ng-controller='mainController'>
-                <h1>Hellow World!!!!!</h1>
-                <p>This is the basic angular demo page for the Services and Dependency Injection section</p>
-		        <hr>
-                <h1>Fields (Angurlar Messages - field)</h1>
-    	           <form name="myForm">
-                        <input type="text" ng-model="field" name="myField" required minlength="5" />
-                    <div ng-messages="myForm.myField.$error">
-                        <div class='alert alert-danger' ng-message="required">You did not enter a field</div>
-                        <div class='alert alert-warning' ng-message="minlength">The value entered is too short</div>
-                    </div>
-                  </form>
-		    
-		    </div>
-		</div>
-		
-
+                
+            </div>
+        </div>    
+  			
     </body>
 </html>
