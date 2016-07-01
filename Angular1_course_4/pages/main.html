@@ -1,0 +1,24 @@
+<div class='col-md-2'>
+</div>
+
+<div class='col-md-8 well'>
+    <img src='https://unsplash.it/1000/300?image=1051'>
+    <label for="">Search</label>
+    <input type="text" value="Doe"/>
+    
+    <h3>Search Results</h3>
+    <div class="list-group" >
+        <search-result person-object="person" formatted-address-function="formattedAddress(aperson)" ng-repeat="person in people"></search-result>
+        
+        <!--this was how to pass by object then key value-->
+        <!--<search-result person-name='{{person.name}}' person-address={{person.address}}></search-result>-->
+        
+        <!--<div search-result></div>-->
+        <!--<div class='search-result'></div>-->
+        <!--below is not a comment, but another directive because M in myApp.directive-->
+        <!--directive: search-result -->
+    </div>
+</div>
+
+<div class='col-md-2'>
+</div>

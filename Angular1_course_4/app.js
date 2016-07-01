@@ -1,4 +1,3 @@
-
 var myApp = angular.module('myApp',['ngRoute']);
 
 //provides routes for different 'pages' in a single page app
@@ -23,7 +22,7 @@ myApp.config(function($routeProvider){
     });
 });
 
-//creating a costume service
+//creating a costume Service
 myApp.service('nameService', function(){
     var self = this;
    this.name = 'John Doe';
@@ -36,8 +35,56 @@ myApp.service('nameService', function(){
 //Minifiable version
 myApp.controller('mainController' , ['$scope', '$location', '$log', 'nameService', function($scope, $location, $log, nameService){
     // $log.info($location.path());
-    $scope.name = nameService.name;
     
+    $scope.person = {
+        name: 'John Doe',
+        address: '555 Main St.',
+        city: 'New York',
+        state:'NY',
+        zip:'11111'
+    }
+    
+    $scope.people = [
+        {
+        name: 'John Doe',
+        address: '555 Main St.',
+        city: 'New York',
+        state:'NY',
+        zip:'11111'
+        },
+        
+        {
+        name: 'Jane Doe',
+        address: '567 Second St.',
+        city: 'Buffalo',
+        state:'NY',
+        zip:'123455'
+        },
+        
+        {
+        name: 'Beach Bunny',
+        address: '1111 Ocean Ave.',
+        city: 'Santa Cruz',
+        state:'CA',
+        zip:'910203'
+        },
+        
+        {
+        name: 'John ToHip',
+        address: '555 Market St.',
+        city: 'San Francisco',
+        state:'CA',
+        zip:'94102'
+        }
+        ];
+    
+    $scope.formattedAddress = function(person){
+        var formatAddress = person.address+', '+person.city+' '+person.state+' '+person.zip;
+        return formatAddress
+    }
+    
+    $scope.name = nameService.name;
+
     $scope.$watch('name', function(){
         nameService.name = $scope.name;
     })
@@ -56,6 +103,31 @@ myApp.controller('secondController' , ['$scope', '$log', '$routeParams', 'nameSe
     })
     
 }]);
+
+//Creating a driective
+myApp.directive('searchResult', function(){
+    return {
+        //restrict - E = attribute (<serach-result>), A - element (<Div search-result)...
+        // ...C = class (<div class='search-results'), M = comment (<!--directive: search result -->)
+        //was ->'AECM'
+        restrict: 'AE', 
+        //Origional template, one string before breaking into the sperate templates html files
+        // template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St.New York, NY 11111</p></a>',
+        
+        templateUrl: 'directives/searchresults.html',
+        replace: true,
+        //scope keyword isolates scope model
+        scope: {
+            personObject: '=',
+            formattedAddressFunction: '&'
+            //This was how to pass by 
+            // personName: '@',
+            // personAddress: '@'
+        }
+    }
+});
+
+
 
 //Angular Controller Origional
 // myApp.controller('mainController',function($log, $scope, $filter, $resource){
